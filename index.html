@@ -1,2327 +1,479 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GyeWeb Studio | Desarrollo Web & Soluciones Digitales</title>
-    <meta name="description" content="Agencia de desarrollo web especializada en e-commerce, SEO y branding. Transformamos ideas en experiencias digitales rentables.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+    <title>Emma Valle Barzola - CV Profesional</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        :root {
-            --primary: #0EA5E9;
-            --primary-dark: #0284C7;
-            --secondary: #6366F1;
-            --dark: #0f172a;
-            --dark-light: #1e293b;
-            --gray: #64748b;
-            --light: #f8fafc;
-        }
-        
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #f5f5f5;
+            color: #2c3e50;
             line-height: 1.6;
-            color: #1e293b;
-            background: #000;
-            overflow-x: hidden;
         }
 
-        /* CURSOR PERSONALIZADO */
-        body {
-            cursor: none;
-        }
-
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 99999;
-            transition: transform 0.15s ease;
-            mix-blend-mode: difference;
-        }
-
-        .cursor-follower {
-            width: 8px;
-            height: 8px;
-            background: var(--primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 99999;
-            transition: transform 0.3s ease;
-        }
-
-        a, button {
-            cursor: none;
-        }
-
-        /* NAVEGACIÓN CON EFECTO GLASSMORPHISM */
-        nav {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid rgba(14, 165, 233, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        nav.scrolled {
-            background: rgba(15, 23, 42, 0.95);
-            box-shadow: 0 8px 32px rgba(14, 165, 233, 0.15);
-            border-bottom-color: rgba(14, 165, 233, 0.3);
-        }
-        
-        .nav-container {
-            max-width: 1400px;
+        .container {
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 90px;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            text-decoration: none;
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-        }
-        
-        .logo::before {
-            content: '';
-            position: absolute;
-            inset: -10px;
-            background: radial-gradient(circle at center, rgba(14, 165, 233, 0.1), transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .logo:hover::before {
-            opacity: 1;
-        }
-        
-        .logo:hover {
-            transform: translateY(-3px);
-        }
-        
-        .logo svg {
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            filter: drop-shadow(0 4px 8px rgba(14, 165, 233, 0.3));
-        }
-        
-        .logo:hover svg {
-            transform: rotate(360deg) scale(1.1);
-            filter: drop-shadow(0 8px 16px rgba(14, 165, 233, 0.6));
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .logo-main {
-            font-size: 1.7rem;
-            font-weight: 900;
-            color: white;
-            letter-spacing: -0.05em;
-        }
-        
-        .logo-gradient {
-            background: linear-gradient(135deg, #0EA5E9, #3B82F6, #6366F1, #8B5CF6);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-flow 3s linear infinite;
-        }
-
-        @keyframes gradient-flow {
-            0%, 100% { background-position: 0% center; }
-            50% { background-position: 100% center; }
-        }
-        
-        .logo-sub {
-            font-size: 0.65rem;
-            color: #94a3b8;
-            letter-spacing: 0.2em;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-        
-        .nav-menu {
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-            list-style: none;
-        }
-        
-        .nav-menu a {
-            text-decoration: none;
-            color: #cbd5e1;
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            font-size: 0.95rem;
-            letter-spacing: 0.02em;
-        }
-        
-        .nav-menu a:not(.btn-primary)::before {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%) scaleX(0);
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        
-        .nav-menu a:not(.btn-primary):hover {
-            color: white;
-        }
-        
-        .nav-menu a:not(.btn-primary):hover::before {
-            transform: translateX(-50%) scaleX(1);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #0EA5E9, #3B82F6, #6366F1);
-            background-size: 200% auto;
-            color: white;
-            padding: 0.85rem 1.8rem;
-            border-radius: 12px;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-block;
-            border: none;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(14, 165, 233, 0.4);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
-        }
-
-        .btn-primary:hover::after {
-            width: 300px;
-            height: 300px;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 32px rgba(14, 165, 233, 0.6);
-            background-position: right center;
-        }
-
-        .btn-primary:hover::before {
-            opacity: 1;
-        }
-        
-        /* HERO - DISEÑO ULTRA MODERNO */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #000000 0%, #0f172a 50%, #1e293b 100%);
-            padding: 140px 3rem 100px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-        }
-        
-        /* Partículas animadas en el fondo */
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
-            animation: particle-flow 20s ease-in-out infinite;
-        }
-
-        @keyframes particle-flow {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(5deg); }
-        }
-
-        /* Grid moderno y dinámico */
-        .hero::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(14, 165, 233, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(ellipse 100% 80% at 50% 50%, black 20%, transparent 80%);
-            animation: grid-pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes grid-pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
-
-        /* Orbes flotantes con glassmorphism */
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: float-orb 20s ease-in-out infinite;
-        }
-
-        .orb-1 {
-            width: 500px;
-            height: 500px;
-            background: linear-gradient(135deg, #0EA5E9, #3B82F6);
-            top: -250px;
-            right: -250px;
-            animation-delay: 0s;
-        }
-
-        .orb-2 {
-            width: 400px;
-            height: 400px;
-            background: linear-gradient(135deg, #6366F1, #8B5CF6);
-            bottom: -200px;
-            left: -200px;
-            animation-delay: 5s;
-        }
-
-        .orb-3 {
-            width: 350px;
-            height: 350px;
-            background: linear-gradient(135deg, #EC4899, #F59E0B);
-            top: 50%;
-            left: 30%;
-            animation-delay: 10s;
-        }
-
-        @keyframes float-orb {
-            0%, 100% { 
-                transform: translate(0, 0) scale(1);
-                opacity: 0.4;
-            }
-            33% { 
-                transform: translate(50px, -50px) scale(1.1);
-                opacity: 0.6;
-            }
-            66% { 
-                transform: translate(-50px, 50px) scale(0.9);
-                opacity: 0.3;
-            }
-        }
-        
-        .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 10;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 5rem;
-            align-items: center;
-        }
-        
-        .hero-text {
-            text-align: left;
-        }
-        
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
-            background: rgba(14, 165, 233, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(14, 165, 233, 0.3);
-            color: #0EA5E9;
-            padding: 0.7rem 1.4rem;
-            border-radius: 50px;
-            font-size: 0.875rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            box-shadow: 0 8px 32px rgba(14, 165, 233, 0.2);
-            animation: badge-float 3s ease-in-out infinite;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        @keyframes badge-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        
-        .hero-badge-dot {
-            width: 10px;
-            height: 10px;
-            background: #0EA5E9;
-            border-radius: 50%;
-            animation: pulse-dot 2s ease-in-out infinite;
-            box-shadow: 0 0 20px rgba(14, 165, 233, 0.8);
-        }
-        
-        @keyframes pulse-dot {
-            0%, 100% { 
-                opacity: 1; 
-                transform: scale(1);
-                box-shadow: 0 0 20px rgba(14, 165, 233, 0.8);
-            }
-            50% { 
-                opacity: 0.6; 
-                transform: scale(1.3);
-                box-shadow: 0 0 30px rgba(14, 165, 233, 0.6);
-            }
-        }
-        
-        .hero h1 {
-            font-size: 4.5rem;
-            font-weight: 900;
-            color: white;
-            margin-bottom: 2rem;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            animation: title-reveal 1s ease-out;
-        }
-
-        @keyframes title-reveal {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .hero-gradient-text {
-            background: linear-gradient(135deg, #0EA5E9 0%, #3B82F6 30%, #6366F1 60%, #8B5CF6 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: block;
-            animation: gradient-text 4s linear infinite;
-            filter: drop-shadow(0 0 30px rgba(14, 165, 233, 0.3));
-        }
-
-        @keyframes gradient-text {
-            0%, 100% { background-position: 0% center; }
-            50% { background-position: 100% center; }
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            color: #cbd5e1;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-            font-weight: 400;
-            animation: fade-in-up 1s ease-out 0.3s both;
-        }
-
-        @keyframes fade-in-up {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .hero-cta {
-            display: flex;
-            gap: 1.2rem;
-            flex-wrap: wrap;
-            margin-bottom: 4rem;
-            animation: fade-in-up 1s ease-out 0.6s both;
-        }
-        
-        .btn-white {
             background: white;
-            color: #0f172a;
-            padding: 1.2rem 2.5rem;
-            border-radius: 14px;
-            font-weight: 800;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            font-size: 1.1rem;
-            box-shadow: 0 20px 60px rgba(14, 165, 233, 0.3);
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
         }
 
-        .btn-white::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, #0EA5E9, #3B82F6);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .btn-white span {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .btn-white:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 25px 70px rgba(14, 165, 233, 0.5);
-            border-color: #0EA5E9;
+        header {
+            background: #2c3e50;
             color: white;
+            padding: 60px 60px 40px;
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 40px;
+            align-items: center;
         }
 
-        .btn-white:hover::before {
-            opacity: 1;
-        }
-        
-        .btn-outline {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            color: white;
-            padding: 1.2rem 2.5rem;
-            border: 2px solid rgba(255,255,255,0.2);
-            border-radius: 14px;
-            font-weight: 800;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            font-size: 1.1rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-outline::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(99, 102, 241, 0.2));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .btn-outline span {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(14, 165, 233, 0.6);
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 60px rgba(14, 165, 233, 0.3);
-        }
-
-        .btn-outline:hover::before {
-            opacity: 1;
-        }
-        
-        .tech-stack {
-            color: #64748b;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 3rem;
-            animation: fade-in-up 1s ease-out 0.9s both;
-        }
-        
-        .tech-stack p {
-            font-size: 0.75rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-weight: 700;
-            color: #94a3b8;
-        }
-        
-        .tech-badges {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .tech-badge {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 0.7rem 1.3rem;
-            border-radius: 10px;
-            font-size: 0.875rem;
-            color: #cbd5e1;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            font-weight: 600;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tech-badge::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(99, 102, 241, 0.2));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .tech-badge span {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .tech-badge:hover {
-            background: rgba(14, 165, 233, 0.15);
-            border-color: rgba(14, 165, 233, 0.5);
-            color: white;
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.3);
-        }
-
-        .tech-badge:hover::before {
-            opacity: 1;
-        }
-        
-        /* HERO VISUAL - 3D CODE WINDOW */
-        .hero-visual {
-            position: relative;
-            height: 550px;
-            perspective: 1500px;
-            animation: fade-in-up 1s ease-out 0.4s both;
-        }
-        
-        .code-window {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(14, 165, 233, 0.3);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 
-                0 30px 80px rgba(0,0,0,0.6),
-                0 0 100px rgba(14, 165, 233, 0.2),
-                inset 0 1px 1px rgba(255,255,255,0.1);
-            transform: rotateY(-5deg) rotateX(5deg);
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-        }
-
-        .code-window::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, #0EA5E9, #6366F1, #8B5CF6);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: -1;
-        }
-
-        .code-window:hover::before {
-            opacity: 0.3;
-            animation: border-glow 2s ease-in-out infinite;
-        }
-
-        @keyframes border-glow {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
-
-        .code-window:hover {
-            transform: rotateY(0deg) rotateX(0deg) scale(1.02);
-        }
-        
-        .window-header {
-            display: flex;
-            gap: 0.7rem;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .window-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        }
-
-        .window-dot:hover {
-            transform: scale(1.2);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-        }
-        
-        .dot-red { background: #ef4444; box-shadow: 0 0 15px rgba(239, 68, 68, 0.6); }
-        .dot-yellow { background: #f59e0b; box-shadow: 0 0 15px rgba(245, 158, 11, 0.6); }
-        .dot-green { background: #10b981; box-shadow: 0 0 15px rgba(16, 185, 129, 0.6); }
-        
-        .code-lines {
-            font-family: 'Courier New', monospace;
-            font-size: 0.95rem;
-            line-height: 2;
-        }
-        
-        .code-line {
-            display: flex;
-            gap: 1.5rem;
-            padding: 0.3rem 0;
-            transition: all 0.3s ease;
-            border-radius: 6px;
-        }
-
-        .code-line:hover {
-            background: rgba(14, 165, 233, 0.1);
-            padding-left: 0.5rem;
-        }
-        
-        .line-number {
-            color: #475569;
-            user-select: none;
-            min-width: 35px;
-            text-align: right;
-            font-weight: 600;
-        }
-        
-        .line-content {
-            color: #cbd5e1;
-        }
-        
-        .code-keyword { color: #c084fc; font-weight: 700; }
-        .code-function { color: #0EA5E9; font-weight: 600; }
-        .code-string { color: #4ade80; }
-        .code-comment { color: #64748b; font-style: italic; }
-        
-        /* FLOATING CARDS CON GLASSMORPHISM */
-        .floating-card {
-            position: absolute;
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 16px;
-            padding: 1.5rem 2rem;
-            box-shadow: 
-                0 20px 50px rgba(0,0,0,0.4),
-                inset 0 1px 1px rgba(255,255,255,0.1);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .floating-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 
-                0 30px 70px rgba(0,0,0,0.6),
-                0 0 50px rgba(14, 165, 233, 0.3);
-            border-color: rgba(14, 165, 233, 0.5);
-        }
-        
-        .card-1 {
-            top: 10%;
-            right: 5%;
-            animation: float-card-1 6s ease-in-out infinite;
-        }
-        
-        .card-2 {
-            bottom: 15%;
-            right: 10%;
-            animation: float-card-2 7s ease-in-out infinite;
-        }
-        
-        @keyframes float-card-1 {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-25px) rotate(2deg); }
-        }
-        
-        @keyframes float-card-2 {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(-2deg); }
-        }
-        
-        .card-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 4px;
+            background: #34495e;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 0.8rem;
-            transition: all 0.4s ease;
-        }
-
-        .floating-card:hover .card-icon {
-            transform: scale(1.15) rotate(10deg);
-        }
-        
-        .card-icon-blue { 
-            background: linear-gradient(135deg, #0EA5E9, #3B82F6); 
-            color: white;
-            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.4);
-        }
-        .card-icon-purple { 
-            background: linear-gradient(135deg, #7c3aed, #8B5CF6); 
-            color: white;
-            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
-        }
-        
-        .card-label {
-            font-size: 0.75rem;
-            color: #94a3b8;
-            margin-bottom: 0.3rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 700;
-        }
-        
-        .card-value {
-            font-size: 2rem;
-            font-weight: 900;
-            color: white;
-            text-shadow: 0 2px 10px rgba(14, 165, 233, 0.5);
-        }
-        
-        /* SECCIONES */
-        section {
-            padding: 120px 3rem;
-            position: relative;
-        }
-        
-        .section-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 6rem;
-            animation: fade-in-up 0.8s ease-out;
-        }
-        
-        .section-header h2 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: #0f172a;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.03em;
-            line-height: 1.2;
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, #0EA5E9, #3B82F6, #6366F1, #8B5CF6);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-text 4s linear infinite;
-        }
-        
-        .section-header p {
-            font-size: 1.3rem;
-            color: #64748b;
-            max-width: 750px;
-            margin: 0 auto;
-            line-height: 1.8;
-            font-weight: 400;
-        }
-        
-        /* SERVICES GRID - DISEÑO BENTO BOX */
-        #servicios {
-            background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f8fafc 100%);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background: white;
-            padding: 3rem;
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            border: 1px solid #f1f5f9;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
             overflow: hidden;
+            border: 3px solid white;
         }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.05), rgba(99, 102, 241, 0.05));
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        .service-card:hover::before {
-            opacity: 1;
-        }
-        
-        .service-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+
+        .profile-photo img {
             width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #0EA5E9, #3B82F6, #6366F1, #8B5CF6);
-            background-size: 200% auto;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            animation: gradient-flow 3s linear infinite;
-        }
-        
-        .service-card:hover::after {
-            transform: scaleX(1);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 
-                0 30px 60px rgba(14, 165, 233, 0.15),
-                0 0 0 1px rgba(14, 165, 233, 0.1);
-        }
-        
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 2rem;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .service-card:hover .service-icon {
-            transform: scale(1.15) rotate(-8deg);
-        }
-        
-        .icon-blue { 
-            background: linear-gradient(135deg, #dbeafe, #bfdbfe); 
-            color: #0EA5E9;
-            box-shadow: 0 15px 35px rgba(14, 165, 233, 0.25);
-        }
-        .icon-purple { 
-            background: linear-gradient(135deg, #ede9fe, #ddd6fe); 
-            color: #7c3aed;
-            box-shadow: 0 15px 35px rgba(124, 58, 237, 0.25);
-        }
-        .icon-green { 
-            background: linear-gradient(135deg, #d1fae5, #a7f3d0); 
-            color: #10b981;
-            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.25);
-        }
-        .icon-red { 
-            background: linear-gradient(135deg, #fee2e2, #fecaca); 
-            color: #ef4444;
-            box-shadow: 0 15px 35px rgba(239, 68, 68, 0.25);
-        }
-        .icon-indigo { 
-            background: linear-gradient(135deg, #e0e7ff, #c7d2fe); 
-            color: #6366f1;
-            box-shadow: 0 15px 35px rgba(99, 102, 241, 0.25);
-        }
-        .icon-yellow { 
-            background: linear-gradient(135deg, #fef3c7, #fde68a); 
-            color: #f59e0b;
-            box-shadow: 0 15px 35px rgba(245, 158, 11, 0.25);
-        }
-        
-        .service-card h3 {
-            font-size: 1.7rem;
-            font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 1.2rem;
-            position: relative;
-            z-index: 1;
-            letter-spacing: -0.02em;
-        }
-        
-        .service-card p {
-            color: #64748b;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-            position: relative;
-            z-index: 1;
-            font-size: 1.05rem;
-        }
-        
-        .service-link {
-            color: #0EA5E9;
-            font-weight: 700;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.7rem;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            z-index: 1;
-            font-size: 1.05rem;
-        }
-        
-        .service-link:hover {
-            gap: 1.3rem;
-            color: #6366F1;
-            transform: translateX(5px);
-        }
-        
-        /* WHY CHOOSE US - DARK SECTION */
-        .dark-section {
-            background: linear-gradient(135deg, #000000 0%, #0f172a 50%, #1e293b 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .dark-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: 
-                radial-gradient(circle at 30% 20%, rgba(14, 165, 233, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
-            animation: particle-flow 15s ease-in-out infinite;
-        }
-        
-        .dark-section::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 70%);
-        }
-        
-        .dark-section .section-header h2 {
-            color: white;
-        }
-        
-        .dark-section .section-header p {
-            color: #cbd5e1;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-        
-        .feature {
-            display: flex;
-            gap: 2rem;
-            padding: 2.5rem;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-            overflow: hidden;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .feature::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(99, 102, 241, 0.1));
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .feature:hover::before {
-            opacity: 1;
-        }
-        
-        .feature:hover {
-            transform: translateX(12px) translateY(-8px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(14, 165, 233, 0.5);
-            box-shadow: 0 20px 60px rgba(14, 165, 233, 0.2);
-        }
-        
-        .feature-icon {
-            flex-shrink: 0;
-            width: 64px;
-            height: 64px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .feature:hover .feature-icon {
-            transform: rotate(360deg) scale(1.15);
-        }
-        
-        .bg-blue { 
-            background: linear-gradient(135deg, #0EA5E9, #3B82F6);
-            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.5);
-        }
-        .bg-purple { 
-            background: linear-gradient(135deg, #7c3aed, #8B5CF6);
-            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.5);
-        }
-        .bg-green { 
-            background: linear-gradient(135deg, #10b981, #34d399);
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.5);
-        }
-        .bg-red { 
-            background: linear-gradient(135deg, #ef4444, #f87171);
-            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.5);
-        }
-        
-        .feature h3 {
-            font-size: 1.7rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            color: white;
-            position: relative;
-            z-index: 1;
-            letter-spacing: -0.02em;
-        }
-        
-        .feature p {
-            color: #cbd5e1;
-            line-height: 1.8;
-            font-size: 1.05rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* CTA SECTION - ULTRA IMPACTANTE */
-        .cta-section {
-            background: linear-gradient(135deg, #0EA5E9, #3B82F6, #6366F1, #8B5CF6);
-            background-size: 300% 300%;
-            animation: gradient-shift 8s ease infinite;
+        .profile-photo-placeholder {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 60px;
+            font-weight: 300;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            line-height: 1;
         }
 
-        @keyframes gradient-shift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.05) 2px, transparent 2px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 2px, transparent 2px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 70%);
-            animation: grid-slide 20s linear infinite;
+        .header-content h1 {
+            font-size: 2.5em;
+            font-weight: 300;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
 
-        @keyframes grid-slide {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(60px, 60px); }
-        }
-        
-        .cta-section::after {
-            content: '';
-            position: absolute;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: pulse-mega 10s ease-in-out infinite;
-        }
-        
-        @keyframes pulse-mega {
-            0%, 100% { 
-                transform: translate(-50%, -50%) scale(1); 
-                opacity: 0.5; 
-            }
-            50% { 
-                transform: translate(-50%, -50%) scale(1.2); 
-                opacity: 0.8; 
-            }
-        }
-        
-        .cta-section .section-container {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .cta-section h2 {
-            font-size: 3.8rem;
-            font-weight: 900;
-            color: white;
-            margin-bottom: 2rem;
-            text-shadow: 0 4px 30px rgba(0,0,0,0.3);
-            letter-spacing: -0.03em;
-            line-height: 1.2;
-            animation: title-pop 0.8s ease-out;
+        .header-content .subtitle {
+            font-size: 1.2em;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 25px;
         }
 
-        @keyframes title-pop {
-            0% {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        .cta-section p {
-            font-size: 1.4rem;
-            color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.7;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-        
-        /* CONTACT SECTION */
-        #contacto {
-            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-        }
-
-        .contact-grid {
+        .contact-info {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: start;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            font-size: 0.9em;
+            opacity: 0.95;
         }
-        
-        .contact-info h2 {
-            font-size: 3.2rem;
-            font-weight: 900;
-            color: #0f172a;
-            margin-bottom: 1.8rem;
-            letter-spacing: -0.03em;
-            line-height: 1.2;
-        }
-        
-        .contact-info > p {
-            font-size: 1.25rem;
-            color: #64748b;
-            margin-bottom: 3rem;
-            line-height: 1.8;
-        }
-        
+
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            padding: 1.8rem;
-            background: white;
-            border-radius: 18px;
-            border: 1px solid #f1f5f9;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            position: relative;
-            overflow: hidden;
+            gap: 10px;
         }
 
-        .contact-item::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.05), rgba(99, 102, 241, 0.05));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .contact-item:hover::before {
-            opacity: 1;
-        }
-        
-        .contact-item:hover {
-            transform: translateX(12px);
-            border-color: rgba(14, 165, 233, 0.3);
-            box-shadow: 0 12px 30px rgba(14, 165, 233, 0.15);
-        }
-        
-        .contact-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .contact-item:hover .contact-icon {
-            transform: scale(1.15) rotate(-8deg);
-        }
-        
-        .contact-details p:first-child {
-            font-size: 0.75rem;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 700;
-            margin-bottom: 0.4rem;
-        }
-        
-        .contact-details p:last-child {
-            font-weight: 700;
-            color: #0f172a;
-            font-size: 1.15rem;
-        }
-        
-        .social-links {
-            margin-top: 4rem;
-            padding-top: 3rem;
-            border-top: 2px solid #f1f5f9;
-        }
-        
-        .social-links p {
-            font-size: 0.75rem;
-            color: #94a3b8;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 700;
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 1.2rem;
-        }
-        
-        .social-icon {
-            width: 56px;
-            height: 56px;
-            background: #f8fafc;
-            border: 1px solid #f1f5f9;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            text-decoration: none;
-            color: #64748b;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-icon::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, #0EA5E9, #3B82F6);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .social-icon svg {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .social-icon:hover {
-            color: white;
-            transform: translateY(-6px) rotate(5deg);
-            box-shadow: 0 15px 40px rgba(14, 165, 233, 0.4);
-            border-color: transparent;
-        }
-
-        .social-icon:hover::before {
-            opacity: 1;
-        }
-        
-        /* FORM - GLASSMORPHISM */
-        .contact-form {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            padding: 3.5rem;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-            border: 1px solid rgba(14, 165, 233, 0.1);
-            position: relative;
-        }
-
-        .contact-form::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            background: linear-gradient(135deg, #0EA5E9, #6366F1);
-            border-radius: 24px;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: -1;
-        }
-
-        .contact-form:hover::before {
-            opacity: 0.1;
-        }
-        
-        .form-group {
-            margin-bottom: 2rem;
-        }
-        
-        .form-group label {
-            display: block;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 0.9rem;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 1.2rem 1.5rem;
-            border: 2px solid #f1f5f9;
-            border-radius: 12px;
-            font-family: inherit;
-            font-size: 1.05rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            background: #f8fafc;
+        .contact-label {
             font-weight: 500;
-        }
-        
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #0EA5E9;
-            background: white;
-            box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.1);
-            transform: translateY(-2px);
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
-        
-        .form-submit {
-            width: 100%;
-            padding: 1.4rem;
-            font-size: 1.15rem;
-        }
-        
-        .form-note {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #94a3b8;
-            margin-top: 1.2rem;
-            line-height: 1.6;
-        }
-        
-        /* FOOTER */
-        footer {
-            background: linear-gradient(180deg, #0f172a 0%, #000000 100%);
-            color: white;
-            padding: 5rem 3rem 2.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        footer::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+            min-width: 80px;
         }
 
-        footer::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(14, 165, 233, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(14, 165, 233, 0.02) 1px, transparent 1px);
-            background-size: 40px 40px;
+        .section {
+            padding: 50px 60px;
+            border-bottom: 1px solid #e0e0e0;
         }
-        
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
+
+        .section:last-child {
+            border-bottom: none;
         }
-        
-        .footer-grid {
+
+        .section h2 {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #2c3e50;
+        }
+
+        .profile-text {
+            font-size: 1em;
+            color: #555;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .education-item, .experience-item {
+            margin-bottom: 35px;
+            padding-bottom: 35px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .education-item:last-child, .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .education-item h3, .experience-item h3 {
+            color: #2c3e50;
+            font-size: 1.2em;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .education-item .institution, .experience-item .company {
+            color: #7f8c8d;
+            font-size: 1em;
+            margin-bottom: 8px;
+        }
+
+        .education-item .period, .experience-item .period {
+            color: #95a5a6;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .subjects {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 4rem;
-            margin-bottom: 4rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px 20px;
+            margin-top: 15px;
         }
-        
-        .footer-col h4 {
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            font-size: 1.15rem;
-            letter-spacing: -0.01em;
+
+        .subject-item {
+            color: #555;
+            font-size: 0.9em;
+            padding-left: 15px;
+            position: relative;
         }
-        
-        .footer-col ul {
+
+        .subject-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #2c3e50;
+        }
+
+        .skills-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        .skill-group h3 {
+            color: #2c3e50;
+            font-size: 1em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .skill-list {
             list-style: none;
         }
-        
-        .footer-col ul li {
-            margin-bottom: 1rem;
-        }
-        
-        .footer-col a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-block;
-            font-weight: 500;
-        }
-        
-        .footer-col a:hover {
-            color: white;
-            padding-left: 10px;
-            text-shadow: 0 0 20px rgba(14, 165, 233, 0.8);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-        
-        .footer-bottom p {
-            color: #64748b;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-        
-        /* WHATSAPP BUTTON - ULTRA LLAMATIVO */
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 2.5rem;
-            right: 2.5rem;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 40px rgba(37, 211, 102, 0.5);
-            z-index: 999;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            text-decoration: none;
-            animation: bounce-whatsapp 2s ease-in-out infinite;
-        }
-        
-        @keyframes bounce-whatsapp {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-12px) scale(1.05); }
-        }
-        
-        .whatsapp-btn::before {
-            content: '';
-            position: absolute;
-            inset: -6px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            opacity: 0.4;
-            animation: pulse-whatsapp 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse-whatsapp {
-            0%, 100% { 
-                transform: scale(1); 
-                opacity: 0.4; 
-            }
-            50% { 
-                transform: scale(1.3); 
-                opacity: 0; 
-            }
-        }
-        
-        .whatsapp-btn:hover {
-            transform: scale(1.2) rotate(10deg);
-            box-shadow: 0 15px 50px rgba(37, 211, 102, 0.7);
-            animation: none;
-        }
-        
-        /* RESPONSIVE */
-        @media (max-width: 1024px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 4rem;
-            }
-            
-            .hero-visual {
-                height: 450px;
-            }
 
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 4rem;
-            }
+        .skill-list li {
+            padding: 6px 0;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 15px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #2c3e50;
+            min-width: 140px;
+        }
+
+        .info-value {
+            color: #555;
+        }
+
+        .reference {
+            background: #f8f9fa;
+            padding: 25px;
+            border-left: 3px solid #2c3e50;
+            margin-top: 20px;
+        }
+
+        .reference h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .reference p {
+            color: #555;
+            margin-bottom: 5px;
+            font-size: 0.95em;
+        }
+
+        .certifications {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .certifications li {
+            padding: 8px 0;
+            color: #555;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .certifications li:last-child {
+            border-bottom: none;
         }
 
         @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .floating-card {
-                display: none;
-            }
-            
-            .section-header h2 {
-                font-size: 2.2rem;
+            header {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 40px 30px;
             }
 
-            .section-header p {
-                font-size: 1.1rem;
+            .profile-photo {
+                margin: 0 auto;
             }
-            
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .features-grid {
+
+            .contact-info {
                 grid-template-columns: 1fr;
             }
 
-            .cta-section h2 {
-                font-size: 2.5rem;
+            .header-content h1 {
+                font-size: 2em;
             }
 
-            .cta-section p {
-                font-size: 1.1rem;
+            .section {
+                padding: 35px 30px;
             }
 
-            section {
-                padding: 80px 2rem;
+            .subjects, .skills-section, .info-grid {
+                grid-template-columns: 1fr;
             }
-
-            .nav-container {
-                padding: 0 2rem;
-            }
-
-            .hero {
-                padding: 140px 2rem 80px;
-            }
-        }
-
-        /* SCROLL ANIMATIONS */
-        [data-aos] {
-            opacity: 0;
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        [data-aos].aos-animate {
-            opacity: 1;
-        }
-
-        [data-aos="fade-up"] {
-            transform: translateY(30px);
-        }
-
-        [data-aos="fade-up"].aos-animate {
-            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    
-    <!-- Cursor personalizado -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-
-    <!-- Orbes de fondo -->
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-    
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <svg width="45" height="45" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#0EA5E9"/>
-                            <stop offset="100%" style="stop-color:#6366F1"/>
-                        </linearGradient>
-                    </defs>
-                    <path d="M 50,25 L 75,37.5 L 75,62.5 L 50,50 Z" fill="url(#logoGrad)" opacity="0.95"/>
-                    <path d="M 75,37.5 L 75,62.5 L 50,75 L 50,50 Z" fill="#4F46E5" opacity="0.9"/>
-                    <path d="M 50,25 L 50,50 L 25,62.5 L 25,37.5 Z" fill="#0EA5E9" opacity="0.88"/>
-                    <circle cx="50" cy="50" r="4" fill="white"/>
-                </svg>
-                <div class="logo-text">
-                    <div>
-                        <span class="logo-main">GYE</span><span class="logo-main logo-gradient">WEB</span>
+    <div class="container">
+        <header>
+            <div class="profile-photo">
+                <!-- Reemplazar con: <img src="foto-emma.jpg" alt="Emma Valle"> -->
+                <div class="profile-photo-placeholder"><img src="C:\Users\USER\Downloads\Imagen1.jpg"></div>
+            </div>
+            <div class="header-content">
+                <h1>Emma Valle Barzola</h1>
+                <div class="subtitle">Profesional en Atención al Cliente y Servicio</div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-label">Email:</span>
+                        <span>emmavalle200@gmail.com</span>
                     </div>
-                    <span class="logo-sub">STUDIO</span>
+                    <div class="contact-item">
+                        <span class="contact-label">Teléfono:</span>
+                        <span>+593 96 318 3992</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Ubicación:</span>
+                        <span>Guayaquil, Ecuador</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Disponibilidad:</span>
+                        <span>Inmediata</span>
+                    </div>
                 </div>
-            </a>
+            </div>
+        </header>
+
+        <div class="section">
+            <h2>Perfil Profesional</h2>
+            <p class="profile-text">
+                Profesional orientada al servicio al cliente con formación especializada en atención, comunicación efectiva y resolución de situaciones complejas. Experiencia en manejo de procedimientos, trabajo bajo presión y atención a públicos diversos. Capacidad demostrada para mantener altos estándares de servicio, comunicación asertiva y trabajo en equipo. Actitud proactiva, excelente presentación personal y habilidades interpersonales que me permiten adaptarme a entornos dinámicos y multiculturales. Comprometida con la excelencia en el servicio y la satisfacción del cliente.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Experiencia Profesional</h2>
             
-            <ul class="nav-menu">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#proceso">Proceso</a></li>
-                <li><a href="#contacto" class="btn-primary">¿Comenzamos?</a></li>
+            <div class="experience-item">
+                <h3>Coordinadora Administrativa</h3>
+                <div class="company">TUCOVA S.A.</div>
+                <div class="period">Noviembre 2019 - Diciembre 2023 (4 años) | Guayaquil, Ecuador</div>
+                <p style="color: #555; margin-bottom: 12px;">Encargada de la coordinación administrativa general en la empresa. Responsable del manejo de documentación, trato directo con proveedores y clientes, apoyo al área de gerencia y resolución de problemas operativos.</p>
+                <div class="subjects">
+                    <div class="subject-item">Coordinación de actividades administrativas</div>
+                    <div class="subject-item">Gestión documental y archivo</div>
+                    <div class="subject-item">Atención y seguimiento a clientes corporativos</div>
+                    <div class="subject-item">Negociación con proveedores</div>
+                    <div class="subject-item">Apoyo directo a gerencia</div>
+                    <div class="subject-item">Resolución de problemas operativos</div>
+                    <div class="subject-item">Comunicación interdepartamental</div>
+                    <div class="subject-item">Control de procesos administrativos</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Formación Académica</h2>
+            
+            <div class="education-item">
+                <h3>Formación en Servicio y Atención al Cliente</h3>
+                <div class="institution">Escuela del Aire - Centro de Capacitación Profesional</div>
+                <div class="period">Marzo 2024 - Junio 2025</div>
+                <p style="color: #555; margin-bottom: 15px;">Formación integral en atención al cliente, servicio de excelencia y manejo de situaciones de alta exigencia.</p>
+                
+                <div class="subjects">
+                    <div class="subject-item">Atención y Servicio al Cliente</div>
+                    <div class="subject-item">Comunicación Efectiva</div>
+                    <div class="subject-item">Liderazgo y Presentación Profesional</div>
+                    <div class="subject-item">Psicología de la Comunicación</div>
+                    <div class="subject-item">Procedimientos de Atención</div>
+                    <div class="subject-item">Manejo de Situaciones Difíciles</div>
+                    <div class="subject-item">Trabajo en Equipo</div>
+                    <div class="subject-item">Primeros Auxilios</div>
+                    <div class="subject-item">Protocolo y Etiqueta</div>
+                    <div class="subject-item">Inglés Profesional</div>
+                    <div class="subject-item">Gestión de Servicios</div>
+                    <div class="subject-item">Seguridad y Prevención</div>
+                </div>
+            </div>
+
+            <div class="education-item">
+                <h3>Bachillerato General Unificado</h3>
+                <div class="institution">Colegio Crear</div>
+                <div class="period">Graduada</div>
+            </div>
+
+            <div class="education-item">
+                <h3>Educación Primaria</h3>
+                <div class="institution">Unidad Educativa La Moderna</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Certificaciones y Formación Complementaria</h2>
+            <ul class="certifications">
+                <li>Primeros Auxilios y Atención de Emergencias</li>
+                <li>Prevención y Manejo de Incidentes</li>
+                <li>Supervivencia y Seguridad - Aero Club del Ecuador (2025)</li>
+                <li>Técnicas de Comunicación Efectiva</li>
+                <li>Defensa Personal</li>
+                <li>EDA Skybound Program (2024-2025)</li>
             </ul>
         </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <div class="hero-badge">
-                    <span class="hero-badge-dot"></span>
-                    Disponibles para nuevos proyectos
-                </div>
-                
-                <h1>
-                    Desarrollo Web de
-                    <span class="hero-gradient-text">Próxima Generación</span>
-                </h1>
-                
-                <p>
-                    Transformamos ideas en experiencias digitales escalables y rentables. Especializados en e-commerce, SEO y branding desde cero.
-                </p>
-                <p style="margin-bottom: 2.5rem;">
-                    Somos expertos en desarrollo web, y estamos comprometidos en maximizar tu retorno y ayudarte a alcanzar tus objetivos comerciales.
-                </p>
-                
-                <div class="hero-cta">
-                    <a href="#contacto" class="btn-white"><span>Iniciar Proyecto</span></a>
-                    <a href="#servicios" class="btn-outline"><span>Ver Servicios</span></a>
-                </div>
-                
-                <div class="tech-stack">
-                    <p>Tecnologías que dominamos</p>
-                    <div class="tech-badges">
-                        <span class="tech-badge"><span>React</span></span>
-                        <span class="tech-badge"><span>Next.js</span></span>
-                        <span class="tech-badge"><span>Shopify</span></span>
-                        <span class="tech-badge"><span>WordPress</span></span>
-                        <span class="tech-badge"><span>Node.js</span></span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="hero-visual">
-                <div class="code-window">
-                    <div class="window-header">
-                        <div class="window-dot dot-red"></div>
-                        <div class="window-dot dot-yellow"></div>
-                        <div class="window-dot dot-green"></div>
-                    </div>
-                    <div class="code-lines">
-                        <div class="code-line">
-                            <span class="line-number">1</span>
-                            <span class="line-content">
-                                <span class="code-keyword">const</span> <span class="code-function">buildProject</span> = () => {
-                            </span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">2</span>
-                            <span class="line-content">
-                                &nbsp;&nbsp;<span class="code-keyword">return</span> {
-                            </span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">3</span>
-                            <span class="line-content">
-                                &nbsp;&nbsp;&nbsp;&nbsp;design: <span class="code-string">'modern'</span>,
-                            </span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">4</span>
-                            <span class="line-content">
-                                &nbsp;&nbsp;&nbsp;&nbsp;performance: <span class="code-string">'optimized'</span>,
-                            </span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">5</span>
-                            <span class="line-content">
-                                &nbsp;&nbsp;&nbsp;&nbsp;seo: <span class="code-string">'first-class'</span>,
-                            </span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">6</span>
-                            <span class="line-content">
-                                &nbsp;&nbsp;&nbsp;&nbsp;results: <span class="code-string">'guaranteed'</span>
-                            </span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">7</span>
-                            <span class="line-content">
-                                &nbsp;&nbsp;}
-                            </span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">8</span>
-                            <span class="line-content">
-                                }
-                            </span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">9</span>
-                            <span class="line-content"></span>
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">10</span>
-                            <span class="line-content">
-                                <span class="code-comment">// Tu éxito es nuestra misión</span>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="floating-card card-1">
-                    <div class="card-icon card-icon-blue">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <div class="card-label">Proyectos Entregados</div>
-                    <div class="card-value">50+</div>
-                </div>
-                
-                <div class="floating-card card-2">
-                    <div class="card-icon card-icon-purple">
-                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
-                        </svg>
-                    </div>
-                    <div class="card-label">Satisfacción</div>
-                    <div class="card-value">98%</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="servicios">
-        <div class="section-container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>
-                    Servicios de Nuestra Agencia de <span class="gradient-text">Desarrollo Web</span>
-                </h2>
-                <p>
-                    Soluciones completas para llevar tu negocio al siguiente nivel digital
-                </p>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon icon-blue">
-                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
-                        </svg>
-                    </div>
-                    <h3>Desarrollo E-commerce</h3>
-                    <p>
-                        Plataformas robustas con Shopify, WooCommerce y soluciones custom. Optimizadas para conversión y escalabilidad.
-                    </p>
-                    <a href="#contacto" class="service-link">
-                        Conoce más →
-                    </a>
-                </div>
-
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon icon-purple">
-                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
-                        </svg>
-                    </div>
-                    <h3>Diseño UI/UX & Branding</h3>
-                    <p>
-                        Desde cero hasta identidad visual completa. Diseños que convierten visitantes en clientes.
-                    </p>
-                    <a href="#contacto" class="service-link">
-                        Conoce más →
-                    </a>
-                </div>
-
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon icon-green">
-                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                        </svg>
-                    </div>
-                    <h3>SEO & Posicionamiento</h3>
-                    <p>
-                        Posicionamos tu sitio en las primeras posiciones de Google. Tráfico cualificado y resultados medibles.
-                    </p>
-                    <a href="#contacto" class="service-link">
-                        Conoce más →
-                    </a>
-                </div>
-
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon icon-red">
-                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                        </svg>
-                    </div>
-                    <h3>Analytics & Optimización</h3>
-                    <p>
-                        Implementación de Google Tag Manager, GA4 y dashboards personalizados para decisiones basadas en datos.
-                    </p>
-                    <a href="#contacto" class="service-link">
-                        Conoce más →
-                    </a>
-                </div>
-
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon icon-indigo">
-                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/>
-                        </svg>
-                    </div>
-                    <h3>Marketing Digital</h3>
-                    <p>
-                        Estrategias completas de Google Ads, Social Media y campañas de performance (PPC) personalizadas.
-                    </p>
-                    <a href="#contacto" class="service-link">
-                        Conoce más →
-                    </a>
-                </div>
-
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon icon-yellow">
-                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <h3>Desarrollo Mobile</h3>
-                    <p>
-                        Aplicaciones móviles nativas y PWA. Experiencias optimizadas para iOS y Android.
-                    </p>
-                    <a href="#contacto" class="service-link">
-                        Conoce más →
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us Section -->
-    <section id="proceso" class="dark-section">
-        <div class="section-container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>
-                    ¿Por qué elegir a GyeWeb como tu agencia de <span class="gradient-text">Desarrollo Web?</span>
-                </h2>
-                <p>
-                    No solo desarrollamos campañas digitales, generamos resultados tangibles. Si buscas una agencia que combine experiencia, innovación y un enfoque 100% orientado al ROI, aquí tienes las razones.
-                </p>
-            </div>
-
-            <div class="features-grid">
-                <div class="feature" data-aos="fade-up" data-aos-delay="100">
-                    <div class="feature-icon bg-blue">
-                        <svg width="24" height="24" fill="none" stroke="white" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3>Estrategias Personalizadas</h3>
-                        <p>
-                            Cada empresa es única. Nuestras estrategias están completamente adaptadas a tus objetivos y necesidades, sin plantillas genéricas.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="feature" data-aos="fade-up" data-aos-delay="200">
-                    <div class="feature-icon bg-purple">
-                        <svg width="24" height="24" fill="none" stroke="white" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3>Enfoque en Resultados Medibles</h3>
-                        <p>
-                            Trabajamos con indicadores clave de rendimiento (KPIs) claros y precisos. Cada acción está dirigida a mejorar tu ROI.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="feature" data-aos="fade-up" data-aos-delay="300">
-                    <div class="feature-icon bg-green">
-                        <svg width="24" height="24" fill="none" stroke="white" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3>Entregas Puntuales</h3>
-                        <p>
-                            Tu tiempo es valioso. Nos comprometemos a entregar proyectos en los plazos acordados, sin excusas ni retrasos.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="feature" data-aos="fade-up" data-aos-delay="100">
-                    <div class="feature-icon bg-red">
-                        <svg width="24" height="24" fill="none" stroke="white" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3>Código Limpio & Escalable</h3>
-                        <p>
-                            Desarrollamos con las mejores prácticas de la industria. Tu proyecto estará preparado para crecer sin límites técnicos.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="section-container">
-            <h2 data-aos="fade-up">¡Escala tus ventas y haz crecer tu negocio con GyeWeb!</h2>
-            <p data-aos="fade-up" data-aos-delay="100">
-                Estamos listos para convertir tu visión en realidad digital. Da el primer paso hacia el éxito online.
-            </p>
-            <a href="#contacto" class="btn-white" data-aos="fade-up" data-aos-delay="200"><span>Solicitar Cotización Gratuita</span></a>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contacto">
-        <div class="section-container">
-            <div class="contact-grid">
-                <div class="contact-info" data-aos="fade-right">
-                    <h2>¿Listo para empezar tu proyecto?</h2>
-                    <p>
-                        Cuéntanos sobre tu idea y te responderemos en menos de 24 horas con una propuesta personalizada.
-                    </p>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon icon-blue">
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                            </svg>
-                        </div>
-                        <div class="contact-details">
-                            <p>Email</p>
-                            <p>contacto@gyeweb.studio</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon icon-green">
-                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                            </svg>
-                        </div>
-                        <div class="contact-details">
-                            <p>WhatsApp</p>
-                            <p>+593 99 123 4567</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon icon-purple">
-                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                            </svg>
-                        </div>
-                        <div class="contact-details">
-                            <p>Ubicación</p>
-                            <p>Guayaquil, Ecuador</p>
-                        </div>
-                    </div>
-
-                    <div class="social-links">
-                        <p>Síguenos en redes sociales</p>
-                        <div class="social-icons">
-                            <a href="#" class="social-icon">
-                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                                </svg>
-                            </a>
-                            <a href="#" class="social-icon">
-                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                </svg>
-                            </a>
-                            <a href="#" class="social-icon">
-                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                                </svg>
-                            </a>
-                            <a href="#" class="social-icon">
-                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-form" data-aos="fade-left">
-                    <form>
-                        <div class="form-group">
-                            <label>Nombre completo *</label>
-                            <input type="text" required placeholder="Tu nombre">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Número de WhatsApp *</label>
-                            <input type="tel" required placeholder="+593 99 123 4567">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Correo electrónico</label>
-                            <input type="email" placeholder="tu@email.com">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>¿Qué servicio necesitas?</label>
-                            <select>
-                                <option>Desarrollo Web</option>
-                                <option>E-commerce</option>
-                                <option>SEO & Marketing</option>
-                                <option>Branding & Diseño</option>
-                                <option>Aplicación Móvil</option>
-                                <option>Consultoría</option>
-                                <option>Otro</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Cuéntanos sobre tu proyecto</label>
-                            <textarea placeholder="Describe brevemente tu idea o necesidad..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn-primary form-submit">Enviar Solicitud</button>
-                        
-                        <p class="form-note">
-                            Al enviar este formulario aceptas nuestra política de privacidad
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <div class="logo" style="margin-bottom: 1rem;">
-                        <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="logoGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#0EA5E9"/>
-                                    <stop offset="100%" style="stop-color:#6366F1"/>
-                                </linearGradient>
-                            </defs>
-                            <path d="M 50,25 L 75,37.5 L 75,62.5 L 50,50 Z" fill="url(#logoGradFooter)"/>
-                            <path d="M 75,37.5 L 75,62.5 L 50,75 L 50,50 Z" fill="#6366F1"/>
-                            <path d="M 50,25 L 50,50 L 25,62.5 L 25,37.5 Z" fill="#0EA5E9"/>
-                            <circle cx="50" cy="50" r="3" fill="white"/>
-                        </svg>
-                    </div>
-                    <p style="color: #94a3b8; font-size: 0.95rem;">
-                        Transformando ideas en experiencias digitales que generan resultados.
-                    </p>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Servicios</h4>
-                    <ul>
-                        <li><a href="#servicios">Desarrollo Web</a></li>
-                        <li><a href="#servicios">E-commerce</a></li>
-                        <li><a href="#servicios">SEO & Marketing</a></li>
-                        <li><a href="#servicios">Branding</a></li>
-                        <li><a href="#servicios">Apps Móviles</a></li>
+        <div class="section">
+            <h2>Competencias Profesionales</h2>
+            <div class="skills-section">
+                <div class="skill-group">
+                    <h3>Idiomas</h3>
+                    <ul class="skill-list">
+                        <li>Español - Nativo</li>
+                        <li>Inglés - Nivel Intermedio</li>
                     </ul>
                 </div>
-                
-                <div class="footer-col">
-                    <h4>Compañía</h4>
-                    <ul>
-                        <li><a href="#">Nosotros</a></li>
-                        <li><a href="#">Portafolio</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
+                <div class="skill-group">
+                    <h3>Sistemas Informáticos</h3>
+                    <ul class="skill-list">
+                        <li>Sabre GDS</li>
+                        <li>Amadeus</li>
+                        <li>Sistemas de Gestión</li>
+                        <li>Microsoft Office</li>
                     </ul>
                 </div>
-                
-                <div class="footer-col">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#">Política de Privacidad</a></li>
-                        <li><a href="#">Términos y Condiciones</a></li>
-                        <li><a href="#">Aviso Legal</a></li>
+                <div class="skill-group">
+                    <h3>Habilidades Personales</h3>
+                    <ul class="skill-list">
+                        <li>Excelente atención al cliente</li>
+                        <li>Comunicación efectiva</li>
+                        <li>Trabajo en equipo</li>
+                        <li>Responsabilidad y puntualidad</li>
+                        <li>Empatía y escucha activa</li>
+                        <li>Organización y planificación</li>
+                    </ul>
+                </div>
+                <div class="skill-group">
+                    <h3>Aptitudes Adicionales</h3>
+                    <ul class="skill-list">
+                        <li>Adaptabilidad a entornos diversos</li>
+                        <li>Manejo de presión</li>
+                        <li>Actitud proactiva</li>
+                        <li>Excelente presentación</li>
+                        <li>Condición física óptima</li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>© 2025 GyeWeb Studio. Todos los derechos reservados.</p>
-                <p>Hecho con ❤️ en Ecuador</p>
+        </div>
+
+        <div class="section">
+            <h2>Información Personal</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">Fecha de Nacimiento:</span>
+                    <span class="info-value">28 de Septiembre de 2002</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Cédula:</span>
+                    <span class="info-value">0930699988</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Pasaporte:</span>
+                    <span class="info-value">A8441677</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Estado Civil:</span>
+                    <span class="info-value">Soltera</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Dirección:</span>
+                    <span class="info-value">Samborondón, Plaza Real, Guayaquil</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Nacionalidad:</span>
+                    <span class="info-value">Ecuatoriana</span>
+                </div>
             </div>
         </div>
-    </footer>
 
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/593991234567" class="whatsapp-btn" target="_blank">
-        <svg width="32" height="32" fill="white" viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-        </svg>
-    </a>
-
-    <script>
-        // Cursor personalizado
-        const cursor = document.querySelector('.cursor');
-        const cursorFollower = document.querySelector('.cursor-follower');
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            
-            setTimeout(() => {
-                cursorFollower.style.left = e.clientX + 'px';
-                cursorFollower.style.top = e.clientY + 'px';
-            }, 100);
-        });
-
-        document.querySelectorAll('a, button, .service-card, .feature, .contact-item').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'scale(2)';
-                cursorFollower.style.transform = 'scale(2)';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'scale(1)';
-                cursorFollower.style.transform = 'scale(1)';
-            });
-        });
-
-        // Navbar scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Simple AOS-like animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('aos-animate');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('[data-aos]').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Form submission
-        document.querySelector('.contact-form form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
-        });
-    </script>
+        <div class="section">
+            <h2>Referencias</h2>
+            <div class="reference">
+                <h3>Sr. Jacinto Valle</h3>
+                <p><strong>Presidente - TUCOVA S.A.</strong></p>
+                <p>Email: jvalle@tucova.com</p>
+                <p>Teléfono: +593 98 649 9990</p>
+                <p>Dirección: Urdesa Central, Cedros 119 y Todos los Santos, Guayaquil</p>
+                <p>Web: www.tucova.com</p>
+            </div>
+        </div>
+    </div>
 </body>
-</html>-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98
+</html>
