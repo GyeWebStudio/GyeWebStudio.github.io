@@ -19,9 +19,10 @@
         }
 
         .container {
-            max-width: 100%;
-            margin: 0;
+            max-width: 1000px;
+            margin: 0 auto;
             background: white;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
         }
         
         @media print {
@@ -29,7 +30,15 @@
                 background: white;
             }
             .container {
+                max-width: 100%;
+                margin: 0;
                 box-shadow: none;
+            }
+            header {
+                padding: 40px 30px 30px;
+            }
+            .section {
+                padding: 30px;
             }
         }
 
