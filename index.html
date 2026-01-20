@@ -19,10 +19,18 @@
         }
 
         .container {
-            max-width: 1000px;
-            margin: 0 auto;
+            max-width: 100%;
+            margin: 0;
             background: white;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
         }
 
         header {
@@ -285,8 +293,7 @@
     <div class="container">
         <header>
             <div class="profile-photo">
-                <!-- Reemplazar con: <img src="foto-emma.jpg" alt="Emma Valle"> -->
-                <div class="profile-photo-placeholder"><img src="Imagen1.jpg"></div>
+                <img src="imagen1.jpg" alt="Emma Valle">
             </div>
             <div class="header-content">
                 <h1>Emma Valle Barzola</h1>
