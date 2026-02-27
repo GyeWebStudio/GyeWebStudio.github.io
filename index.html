@@ -1,845 +1,761 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Web Developer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f9fafb;
-            color: #1f2937;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        /* Profile Header */
-        .profile-header {
-            background: white;
-            border-bottom: 2px solid #e5e7eb;
-            padding: 3rem 0;
-        }
-
-        .profile-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .profile-photo {
-            width: 192px;
-            height: 192px;
-            border-radius: 50%;
-            background: #f3f4f6;
-            border: 4px solid #2563eb;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .profile-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .profile-info h1 {
-            font-size: 2.25rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .profile-info .subtitle {
-            font-size: 1.5rem;
-            color: #2563eb;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .tag {
-            padding: 0.5rem 1rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-
-        .tag-blue { background: #dbeafe; color: #1e40af; }
-        .tag-purple { background: #e9d5ff; color: #7e22ce; }
-        .tag-green { background: #d1fae5; color: #065f46; }
-
-        .profile-description {
-            font-size: 1.125rem;
-            color: #374151;
-            max-width: 42rem;
-        }
-
-        /* Navigation */
-        .nav-header {
-            background: white;
-            border-bottom: 1px solid #e5e7eb;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            padding: 1.5rem 0;
-        }
-
-        .nav-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .nav-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .nav-title h2 {
-            font-size: 1.25rem;
-            font-weight: bold;
-        }
-
-        .nav-title p {
-            color: #6b7280;
-        }
-
-        .btn-export {
-            padding: 0.5rem 1rem;
-            background: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 0.5rem;
-            font-size: 0.875rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .btn-export:hover {
-            background: #1d4ed8;
-        }
-
-        .nav-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .nav-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 0.5rem;
-            background: none;
-            color: #6b7280;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.875rem;
-        }
-
-        .nav-btn:hover {
-            background: #f3f4f6;
-        }
-
-        .nav-btn.active {
-            background: #dbeafe;
-            color: #1e40af;
-            font-weight: 600;
-        }
-
-        .nav-btn svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* Main Content */
-        main {
-            padding: 2rem 0;
-        }
-
-        .section {
-            display: none;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        /* Overview Section */
-        .hero-box {
-            background: linear-gradient(to right, #2563eb, #9333ea);
-            color: white;
-            border-radius: 0.5rem;
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-box h2 {
-            font-size: 1.875rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .hero-box p {
-            font-size: 1.125rem;
-            color: #dbeafe;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .hero-tag {
-            padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-
-        .card {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .card h3 {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .philosophy {
-            color: #374151;
-        }
-
-        .philosophy p {
-            margin-bottom: 1rem;
-        }
-
-        .philosophy strong {
-            color: #1f2937;
-        }
-
-        .highlight-box {
-            background: #f9fafb;
-            border-left: 4px solid #2563eb;
-            padding: 1rem;
-            margin: 1rem 0;
-        }
-
-        .highlight-box p {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .highlight-box ul {
-            list-style: none;
-            margin-left: 1rem;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-
-        .stat-card {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2.25rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-blue { color: #2563eb; }
-        .stat-purple { color: #9333ea; }
-        .stat-green { color: #16a34a; }
-
-        .stat-label {
-            font-size: 0.875rem;
-            color: #6b7280;
-        }
-
-        /* Projects Section */
-        .project-card {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            transition: box-shadow 0.2s;
-        }
-
-        .project-card:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 1rem;
-            gap: 1rem;
-        }
-
-        .project-title h3 {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 0.25rem;
-        }
-
-        .project-meta {
-            font-size: 0.875rem;
-            color: #6b7280;
-        }
-
-        .complexity-badge {
-            padding: 0.25rem 0.75rem;
-            background: #dbeafe;
-            color: #1e40af;
-            font-size: 0.75rem;
-            font-weight: 600;
-            border-radius: 9999px;
-            white-space: nowrap;
-        }
-
-        .project-section {
-            margin-bottom: 1rem;
-        }
-
-        .project-section h4 {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-section p {
-            color: #374151;
-            font-size: 0.875rem;
-        }
-
-        .solution-list {
-            list-style: none;
-        }
-
-        .solution-item {
-            display: flex;
-            align-items: start;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-            font-size: 0.875rem;
-            color: #374151;
-        }
-
-        .check-icon {
-            color: #16a34a;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .project-footer {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .footer-section {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .footer-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #6b7280;
-            text-transform: uppercase;
-            margin-bottom: 0.25rem;
-        }
-
-        .footer-text {
-            font-size: 0.875rem;
-            color: #374151;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .skill-card {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-        }
-
-        .skill-header {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .skill-icon {
-            width: 24px;
-            height: 24px;
-        }
-
-        .icon-blue { color: #2563eb; }
-        .icon-purple { color: #9333ea; }
-        .icon-green { color: #16a34a; }
-        .icon-red { color: #dc2626; }
-
-        .skill-header h3 {
-            font-size: 1.125rem;
-            font-weight: bold;
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-item {
-            display: flex;
-            align-items: start;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-            font-size: 0.875rem;
-            color: #374151;
-        }
-
-        .skill-bullet {
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        /* Footer */
-        footer {
-            background: white;
-            border-top: 1px solid #e5e7eb;
-            margin-top: 3rem;
-            padding: 1.5rem 0;
-            text-align: center;
-        }
-
-        footer p {
-            color: #6b7280;
-            font-size: 0.875rem;
-        }
-
-        /* Print Styles */
-        @media print {
-            body { background: white; }
-            .nav-header { position: relative; }
-            .btn-export, .nav-btn { display: none; }
-            .project-card:hover { box-shadow: none; }
-        }
-
-        @media (min-width: 768px) {
-            .profile-content {
-                flex-direction: row;
-                text-align: left;
-            }
-
-            .profile-info {
-                flex: 1;
-            }
-
-            .tags {
-                justify-content: flex-start;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sierra — Brand Identity Pack</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Josefin+Sans:wght@200;300;400&display=swap');
+
+  :root {
+    --espresso:   #1A1410;
+    --mahogany:   #2C1810;
+    --gold:       #C8A96E;
+    --gold-light: #E8D5B0;
+    --sienna:     #8B7355;
+    --cream:      #FAF7F2;
+    --fog:        #EDE8E0;
+    --charcoal:   #3D3530;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Josefin Sans', sans-serif;
+    background: var(--cream);
+    color: var(--mahogany);
+  }
+
+  /* ── COVER ── */
+  .cover {
+    height: 100vh;
+    background: var(--espresso);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 60%, #2C1810 0%, #1A1410 70%);
+  }
+  .cover-logo { position: relative; z-index: 2; }
+  .cover-label {
+    position: relative; z-index: 2;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 200;
+    font-size: 9px;
+    letter-spacing: 6px;
+    color: var(--sienna);
+    margin-top: 48px;
+    text-transform: uppercase;
+  }
+  .cover-title {
+    position: relative; z-index: 2;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-top: 8px;
+    text-transform: uppercase;
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 80px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 8px;
+    letter-spacing: 5px;
+    color: var(--sienna);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--sienna);
+    opacity: 0.4;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 32px;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+    color: var(--mahogany);
+  }
+
+  /* ── LOGO SECTION ── */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+  }
+  .logo-card {
+    padding: 48px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .logo-card.dark  { background: var(--espresso); }
+  .logo-card.light { background: var(--cream); border: 1px solid var(--fog); }
+  .logo-card.fog   { background: var(--fog); }
+  .logo-meta {
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .logo-card.dark  .logo-meta { color: var(--sienna); }
+  .logo-card.light .logo-meta { color: var(--sienna); }
+  .logo-card.fog   .logo-meta { color: var(--sienna); }
+
+  /* Inline SVG logos */
+  .logo-svg { width: 200px; }
+
+  /* ── PALETTE ── */
+  .palette { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; margin-bottom: 40px; }
+  .swatch { padding-bottom: 100%; position: relative; }
+  .swatch-info {
+    padding: 12px 10px 16px;
+    background: white;
+    border: 1px solid var(--fog);
+  }
+  .swatch-name { font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--charcoal); margin-bottom: 4px; }
+  .swatch-hex  { font-size: 10px; letter-spacing: 1px; color: var(--sienna); }
+  .swatch-cmyk { font-size: 7px; letter-spacing: 0.5px; color: #aaa; margin-top: 2px; }
+
+  /* ── TYPOGRAPHY ── */
+  .type-specimen {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  .type-card {
+    padding: 40px;
+    background: white;
+    border: 1px solid var(--fog);
+  }
+  .type-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--mahogany);
+    margin-bottom: 16px;
+  }
+  .type-body-demo {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    font-weight: 300;
+    color: var(--sienna);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .type-label { font-size: 8px; letter-spacing: 3px; text-transform: uppercase; color: #bbb; }
+  .type-name  { font-size: 11px; letter-spacing: 2px; color: var(--charcoal); margin-top: 4px; }
+
+  /* ── WEB HEADER MOCKUP ── */
+  .mockup-web {
+    border: 1px solid var(--fog);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  }
+  .browser-bar {
+    background: #f0ece5;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--fog);
+  }
+  .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .browser-url {
+    flex: 1;
+    background: white;
+    border: 1px solid var(--fog);
+    border-radius: 4px;
+    padding: 3px 10px;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--sienna);
+    margin-left: 12px;
+  }
+  .web-header {
+    background: var(--espresso);
+    padding: 24px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .web-nav {
+    display: flex;
+    gap: 32px;
+  }
+  .web-nav a {
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sienna);
+    text-decoration: none;
+  }
+  .web-hero {
+    background: var(--espresso);
+    padding: 80px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    border-top: 0.5px solid rgba(200,169,110,0.15);
+  }
+  .web-hero-text h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.2;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+  .web-hero-text p {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--sienna);
+    line-height: 2;
+    text-transform: uppercase;
+  }
+  .web-hero-btn {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 12px 32px;
+    border: 0.5px solid var(--gold);
+    font-size: 8px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .hero-img-placeholder {
+    height: 220px;
+    background: linear-gradient(135deg, #2C1810, #3D2415);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── MUG MOCKUP ── */
+  .mockup-section {
+    background: var(--espresso);
+    padding: 80px 60px;
+    margin: 0;
+  }
+  .mockup-section .section-label { color: var(--sienna); }
+  .mockup-section .section-label::after { background: var(--sienna); }
+  .mockup-section h2 { color: var(--cream); }
+
+  .merch-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+  }
+  .merch-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .merch-label {
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sienna);
+  }
+
+  /* SVG Mug */
+  .mug-svg { width: 160px; }
+
+  /* SVG Bag */
+  .bag-svg { width: 130px; }
+
+  /* SVG Tee */
+  .tee-svg { width: 160px; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 60px;
+    height: 0.5px;
+    background: var(--gold);
+    margin: 0 auto;
+    opacity: 0.4;
+  }
+
+  /* ── GUIDELINES TABLE ── */
+  .guidelines-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+  }
+  .guidelines-table th {
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sienna);
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 0.5px solid var(--fog);
+  }
+  .guidelines-table td {
+    padding: 14px 16px;
+    border-bottom: 0.5px solid var(--fog);
+    color: var(--charcoal);
+    letter-spacing: 0.5px;
+  }
+  .guidelines-table tr:last-child td { border-bottom: none; }
+
+  /* Footer */
+  .footer {
+    background: var(--espresso);
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-text {
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--sienna);
+    text-transform: uppercase;
+  }
+</style>
 </head>
 <body>
-    <!-- Profile Header -->
-    <div class="profile-header">
-        <div class="container">
-            <div class="profile-content">
-                <div class="profile-photo">
-                    <img src="1757472533730.jpg" alt="Profile">
-                </div>
-                <div class="profile-info">
-                    <h1>Mateo Valle</h1>
-                    <p class="subtitle">Web Developer</p>
-                    <div class="tags">
-                        <span class="tag tag-blue">Problem Solver</span>
-                        <span class="tag tag-purple">Security Aware</span>
-                        <span class="tag tag-green">Production-First</span>
-                    </div>
-                    <p class="profile-description">
-                        Desarrollador especializado en soluciones resilientes para entornos de producción reales. 
-                        Enfoque pragmático en CMS, ecommerce y sistemas integrados.
-                    </p>
-                </div>
-            </div>
-        </div>
+
+<!-- ═══════════════════════════════════════════ COVER -->
+<div class="cover">
+  <div class="cover-logo">
+    <svg viewBox="0 0 400 200" width="360" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(200,20)">
+        <polygon points="-90,95 -40,30 10,95" fill="none" stroke="#C8A96E" stroke-width="1.5"/>
+        <polygon points="-20,95 30,-5 80,95" fill="none" stroke="#C8A96E" stroke-width="1.5"/>
+        <line x1="-90" y1="95" x2="80" y2="95" stroke="#C8A96E" stroke-width="1.5"/>
+        <polyline points="19,18 30,-5 41,18" fill="none" stroke="#E8D5B0" stroke-width="1"/>
+      </g>
+      <text x="200" y="152" font-family="Georgia, serif" font-size="38" font-weight="400" letter-spacing="14" fill="#C8A96E" text-anchor="middle">SIERRA</text>
+      <line x1="90" y1="163" x2="155" y2="163" stroke="#C8A96E" stroke-width="0.5" opacity="0.6"/>
+      <line x1="245" y1="163" x2="310" y2="163" stroke="#C8A96E" stroke-width="0.5" opacity="0.6"/>
+      <text x="200" y="177" font-family="Courier New, monospace" font-size="9" letter-spacing="5" fill="#8B7355" text-anchor="middle">CAFÉ DE ESPECIALIDAD</text>
+    </svg>
+  </div>
+  <div class="cover-label">Brand Identity Pack</div>
+  <div class="cover-title">Diseño de Identidad Visual Completa</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ LOGO VARIANTS -->
+<section>
+  <div class="section-label">01 — Logotipo</div>
+  <h2>Variantes del Logo Maestro</h2>
+  <div class="logo-grid">
+
+    <div class="logo-card dark">
+      <svg viewBox="0 0 400 200" class="logo-svg" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(200,20)">
+          <polygon points="-90,95 -40,30 10,95" fill="none" stroke="#C8A96E" stroke-width="1.5"/>
+          <polygon points="-20,95 30,-5 80,95" fill="none" stroke="#C8A96E" stroke-width="1.5"/>
+          <line x1="-90" y1="95" x2="80" y2="95" stroke="#C8A96E" stroke-width="1.5"/>
+          <polyline points="19,18 30,-5 41,18" fill="none" stroke="#E8D5B0" stroke-width="1"/>
+        </g>
+        <text x="200" y="152" font-family="Georgia, serif" font-size="38" letter-spacing="14" fill="#C8A96E" text-anchor="middle">SIERRA</text>
+        <line x1="90" y1="163" x2="155" y2="163" stroke="#C8A96E" stroke-width="0.5" opacity="0.6"/>
+        <line x1="245" y1="163" x2="310" y2="163" stroke="#C8A96E" stroke-width="0.5" opacity="0.6"/>
+        <text x="200" y="177" font-family="Courier New, monospace" font-size="9" letter-spacing="5" fill="#8B7355" text-anchor="middle">CAFÉ DE ESPECIALIDAD</text>
+      </svg>
+      <div class="logo-meta" style="color:#8B7355">Fondo Oscuro</div>
     </div>
 
-    <!-- Navigation -->
-    <header class="nav-header">
-        <div class="container">
-            <div class="nav-content">
-                <div class="nav-top">
-                    <div class="nav-title">
-                        <h2>Portfolio & CV</h2>
-                        <p>Documentación de proyectos y expertise técnico</p>
-                    </div>
-                    <button class="btn-export" onclick="window.print()">Exportar PDF</button>
-                </div>
-                <div class="nav-buttons">
-                    <button class="nav-btn active" data-section="overview">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                        Overview
-                    </button>
-                    <button class="nav-btn" data-section="projects">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                        Proyectos
-                    </button>
-                    <button class="nav-btn" data-section="skills">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/></svg>
-                        Habilidades
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
+    <div class="logo-card light">
+      <svg viewBox="0 0 400 200" class="logo-svg" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(200,20)">
+          <polygon points="-90,95 -40,30 10,95" fill="none" stroke="#2C1810" stroke-width="1.5"/>
+          <polygon points="-20,95 30,-5 80,95" fill="none" stroke="#2C1810" stroke-width="1.5"/>
+          <line x1="-90" y1="95" x2="80" y2="95" stroke="#2C1810" stroke-width="1.5"/>
+          <polyline points="19,18 30,-5 41,18" fill="none" stroke="#6B4C2A" stroke-width="1"/>
+        </g>
+        <text x="200" y="152" font-family="Georgia, serif" font-size="38" letter-spacing="14" fill="#2C1810" text-anchor="middle">SIERRA</text>
+        <line x1="90" y1="163" x2="155" y2="163" stroke="#2C1810" stroke-width="0.5" opacity="0.4"/>
+        <line x1="245" y1="163" x2="310" y2="163" stroke="#2C1810" stroke-width="0.5" opacity="0.4"/>
+        <text x="200" y="177" font-family="Courier New, monospace" font-size="9" letter-spacing="5" fill="#8B7355" text-anchor="middle">CAFÉ DE ESPECIALIDAD</text>
+      </svg>
+      <div class="logo-meta">Fondo Claro</div>
+    </div>
 
-    <!-- Main Content -->
-    <main class="container">
-        <!-- Overview Section -->
-        <div class="section active" id="overview">
-            <div class="hero-box">
-                <h2>Developer enfocado en soluciones reales</h2>
-                <p>
-                    Especializado en desarrollo web con enfoque pragmático: construcción de soluciones resilientes 
-                    en entornos de producción con restricciones reales.
-                </p>
-                <div class="hero-tags">
-                    <span class="hero-tag">CMS Development</span>
-                    <span class="hero-tag">Ecommerce Platforms</span>
-                    <span class="hero-tag">System Integration</span>
-                    <span class="hero-tag">Cybersecurity</span>
-                </div>
-            </div>
+    <div class="logo-card fog">
+      <svg viewBox="0 0 400 200" class="logo-svg" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(200,20)">
+          <polygon points="-90,95 -40,30 10,95" fill="none" stroke="#C8A96E" stroke-width="1.5"/>
+          <polygon points="-20,95 30,-5 80,95" fill="none" stroke="#C8A96E" stroke-width="1.5"/>
+          <line x1="-90" y1="95" x2="80" y2="95" stroke="#C8A96E" stroke-width="1.5"/>
+          <polyline points="19,18 30,-5 41,18" fill="none" stroke="#E8D5B0" stroke-width="1"/>
+        </g>
+        <text x="200" y="152" font-family="Georgia, serif" font-size="38" letter-spacing="14" fill="#C8A96E" text-anchor="middle">SIERRA</text>
+        <line x1="90" y1="163" x2="155" y2="163" stroke="#C8A96E" stroke-width="0.5" opacity="0.6"/>
+        <line x1="245" y1="163" x2="310" y2="163" stroke="#C8A96E" stroke-width="0.5" opacity="0.6"/>
+        <text x="200" y="177" font-family="Courier New, monospace" font-size="9" letter-spacing="5" fill="#8B7355" text-anchor="middle">CAFÉ DE ESPECIALIDAD</text>
+      </svg>
+      <div class="logo-meta">Transparente / Neutro</div>
+    </div>
 
-            <div class="card">
-                <h3>Filosofía de trabajo</h3>
-                <div class="philosophy">
-                    <p>
-                        Trabajo principalmente en <strong>entornos reales y limitados</strong> (CMS, widgets de terceros, 
-                        estructuras que no controlo). Mi fortaleza no es aplicar frameworks "perfectos", sino 
-                        <strong>analizar restricciones, anticipar puntos de falla y diseñar soluciones que sigan 
-                        funcionando cuando el entorno cambia</strong>.
-                    </p>
-                    
-                    <div class="highlight-box">
-                        <p>En mis proyectos priorizo:</p>
-                        <ul>
-                            <li>✓ Soluciones resilientes</li>
-                            <li>✓ Bajo acoplamiento</li>
-                            <li>✓ Mantenimiento sencillo</li>
-                            <li>✓ Mínima ruptura de tracking o flujos existentes</li>
-                        </ul>
-                    </div>
+  </div>
+</section>
 
-                    <p>
-                        No busco la solución más elegante en teoría, sino <strong>la que funciona en producción 
-                        y puede sostenerse en el tiempo</strong>.
-                    </p>
-                </div>
-            </div>
+<!-- ═══════════════════════════════════════════ FAVICON -->
+<section style="padding-top:0">
+  <div class="section-label">01B — Favicon & App Icon</div>
+  <div style="display:flex; gap:24px; align-items:flex-end">
+    <!-- 32px -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+      <svg viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" fill="#1A1410" rx="4"/>
+        <g transform="translate(16,3)">
+          <polygon points="-10,19 -4,8 2,19" fill="none" stroke="#C8A96E" stroke-width="1.2"/>
+          <polygon points="-2,19 4,2 10,19" fill="none" stroke="#C8A96E" stroke-width="1.2"/>
+          <line x1="-10" y1="19" x2="10" y2="19" stroke="#C8A96E" stroke-width="1.2"/>
+        </g>
+        <text x="16" y="30" font-family="Georgia, serif" font-size="7" letter-spacing="1.5" fill="#C8A96E" text-anchor="middle">SIERRA</text>
+      </svg>
+      <span style="font-size:8px;letter-spacing:2px;color:var(--sienna)">32px</span>
+    </div>
+    <!-- 64px -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+      <svg viewBox="0 0 32 32" width="64" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" fill="#1A1410" rx="4"/>
+        <g transform="translate(16,3)">
+          <polygon points="-10,19 -4,8 2,19" fill="none" stroke="#C8A96E" stroke-width="1.2"/>
+          <polygon points="-2,19 4,2 10,19" fill="none" stroke="#C8A96E" stroke-width="1.2"/>
+          <line x1="-10" y1="19" x2="10" y2="19" stroke="#C8A96E" stroke-width="1.2"/>
+        </g>
+        <text x="16" y="30" font-family="Georgia, serif" font-size="7" letter-spacing="1.5" fill="#C8A96E" text-anchor="middle">SIERRA</text>
+      </svg>
+      <span style="font-size:8px;letter-spacing:2px;color:var(--sienna)">64px</span>
+    </div>
+    <!-- 128px -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+      <svg viewBox="0 0 32 32" width="128" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" fill="#1A1410" rx="2"/>
+        <g transform="translate(16,3)">
+          <polygon points="-10,19 -4,8 2,19" fill="none" stroke="#C8A96E" stroke-width="1.2"/>
+          <polygon points="-2,19 4,2 10,19" fill="none" stroke="#C8A96E" stroke-width="1.2"/>
+          <line x1="-10" y1="19" x2="10" y2="19" stroke="#C8A96E" stroke-width="1.2"/>
+        </g>
+        <text x="16" y="30" font-family="Georgia, serif" font-size="7" letter-spacing="1.5" fill="#C8A96E" text-anchor="middle">SIERRA</text>
+      </svg>
+      <span style="font-size:8px;letter-spacing:2px;color:var(--sienna)">128px</span>
+    </div>
+  </div>
+</section>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number stat-blue">4+</div>
-                    <div class="stat-label">Proyectos<br>completados</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number stat-purple">50+</div>
-                    <div class="stat-label">Servicios<br>implementados</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number stat-green">100%</div>
-                    <div class="stat-label">Enfoque en<br>producción</div>
-                </div>
-            </div>
-        </div>
+<!-- ═══════════════════════════════════════════ COLOR PALETTE -->
+<section>
+  <div class="section-label">02 — Paleta de Color</div>
+  <h2>Colores de Marca</h2>
 
-        <!-- Projects Section -->
-        <div class="section" id="projects"></div>
+  <div class="palette">
+    <div>
+      <div class="swatch" style="background:#1A1410"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Espresso</div>
+        <div class="swatch-hex">#1A1410</div>
+        <div class="swatch-cmyk">C:0 M:21 Y:37 K:90</div>
+      </div>
+    </div>
+    <div>
+      <div class="swatch" style="background:#2C1810"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Mahogany</div>
+        <div class="swatch-hex">#2C1810</div>
+        <div class="swatch-cmyk">C:0 M:46 Y:64 K:83</div>
+      </div>
+    </div>
+    <div>
+      <div class="swatch" style="background:#C8A96E"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Gold</div>
+        <div class="swatch-hex">#C8A96E</div>
+        <div class="swatch-cmyk">C:0 M:16 Y:45 K:22</div>
+      </div>
+    </div>
+    <div>
+      <div class="swatch" style="background:#E8D5B0"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Gold Light</div>
+        <div class="swatch-hex">#E8D5B0</div>
+        <div class="swatch-cmyk">C:0 M:8 Y:24 K:9</div>
+      </div>
+    </div>
+    <div>
+      <div class="swatch" style="background:#8B7355"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Sienna</div>
+        <div class="swatch-hex">#8B7355</div>
+        <div class="swatch-cmyk">C:0 M:18 Y:38 K:45</div>
+      </div>
+    </div>
+    <div>
+      <div class="swatch" style="background:#FAF7F2"></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Cream</div>
+        <div class="swatch-hex">#FAF7F2</div>
+        <div class="swatch-cmyk">C:0 M:1 Y:3 K:2</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <!-- Skills Section -->
-        <div class="section" id="skills"></div>
-    </main>
+<!-- ═══════════════════════════════════════════ TYPOGRAPHY -->
+<section style="padding-top:0">
+  <div class="section-label">03 — Tipografía</div>
+  <h2>Sistema Tipográfico</h2>
+  <div class="type-specimen">
+    <div class="type-card">
+      <div class="type-display">Sierra</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:var(--sienna);margin-bottom:12px;letter-spacing:1px">Café de Especialidad</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:11px;color:#bbb;letter-spacing:1px;margin-bottom:16px">
+        Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm<br>
+        Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz
+      </div>
+      <div class="type-label">Display / Headlines</div>
+      <div class="type-name">Cormorant Garamond — Light 300</div>
+    </div>
+    <div class="type-card">
+      <div class="type-body-demo" style="font-size:24px">SIERRA COFFEE</div>
+      <div class="type-body-demo">CAFÉ DE ESPECIALIDAD</div>
+      <div style="font-family:'Josefin Sans',sans-serif;font-size:11px;color:#bbb;letter-spacing:2px;margin-bottom:16px;font-weight:300;text-transform:uppercase">
+        A B C D E F G H I J K L M<br>
+        N O P Q R S T U V W X Y Z
+      </div>
+      <div class="type-label">Body / UI / Labels</div>
+      <div class="type-name">Josefin Sans — Light 300 / Regular 400</div>
+    </div>
+  </div>
+  <div style="background:white;border:1px solid var(--fog);padding:24px 32px;">
+    <table class="guidelines-table">
+      <tr>
+        <th>Uso</th>
+        <th>Fuente</th>
+        <th>Peso</th>
+        <th>Tamaño</th>
+        <th>Tracking</th>
+      </tr>
+      <tr><td>Logotipo principal</td><td>Georgia / Garamond</td><td>400</td><td>38px+</td><td>14px</td></tr>
+      <tr><td>Headlines</td><td>Cormorant Garamond</td><td>300</td><td>32–52px</td><td>2–4px</td></tr>
+      <tr><td>Subtítulos</td><td>Cormorant Garamond Italic</td><td>300</td><td>16–24px</td><td>1px</td></tr>
+      <tr><td>Navegación / Labels</td><td>Josefin Sans</td><td>200</td><td>8–10px</td><td>4–6px</td></tr>
+      <tr><td>Eslogan</td><td>Courier New</td><td>400</td><td>9px</td><td>5px</td></tr>
+      <tr><td>Cuerpo de texto</td><td>Josefin Sans</td><td>300</td><td>13–14px</td><td>0.5px</td></tr>
+    </table>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>Developer Portfolio • 2024-2025 • Enfoque en soluciones pragmáticas y resilientes</p>
-        </div>
-    </footer>
+<!-- ═══════════════════════════════════════════ WEB MOCKUP -->
+<section>
+  <div class="section-label">04 — Maqueta Web</div>
+  <h2>Header & Hero — Sitio Web</h2>
+  <div class="mockup-web">
+    <div class="browser-bar">
+      <div class="browser-dot" style="background:#ff6058"></div>
+      <div class="browser-dot" style="background:#ffbd2e"></div>
+      <div class="browser-dot" style="background:#28c940"></div>
+      <div class="browser-url">sierracafe.com</div>
+    </div>
+    <div class="web-header">
+      <svg viewBox="0 0 280 60" width="180" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(30,2)">
+          <polygon points="-20,26 -8,8 4,26" fill="none" stroke="#C8A96E" stroke-width="1.2"/>
+          <polygon points="-2,26 8,0 18,26" fill="none" stroke="#C8A96E" stroke-width="1.2"/>
+          <line x1="-20" y1="26" x2="18" y2="26" stroke="#C8A96E" stroke-width="1.2"/>
+        </g>
+        <text x="80" y="22" font-family="Georgia,serif" font-size="18" letter-spacing="6" fill="#C8A96E">SIERRA</text>
+        <text x="80" y="34" font-family="Courier New,monospace" font-size="6" letter-spacing="3" fill="#8B7355">CAFÉ DE ESPECIALIDAD</text>
+      </svg>
+      <div class="web-nav">
+        <a href="#">Origen</a>
+        <a href="#">Proceso</a>
+        <a href="#">Productos</a>
+        <a href="#">Contacto</a>
+      </div>
+    </div>
+    <div class="web-hero">
+      <div class="web-hero-text">
+        <h1>Del Pico<br>a tu Taza</h1>
+        <p>Granos cultivados a 1,800 metros<br>de altitud. Tostado artesanal.<br>Calidad sin compromiso.</p>
+        <a href="#" class="web-hero-btn">Descubrir</a>
+      </div>
+      <div class="hero-img-placeholder">
+        <svg viewBox="0 0 200 120" width="200" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="20,100 70,30 120,100" fill="none" stroke="#C8A96E" stroke-width="1" opacity="0.4"/>
+          <polygon points="80,100 140,10 200,100" fill="none" stroke="#C8A96E" stroke-width="1" opacity="0.6"/>
+          <line x1="20" y1="100" x2="200" y2="100" stroke="#C8A96E" stroke-width="1" opacity="0.3"/>
+          <polyline points="125,28 140,10 155,28" fill="none" stroke="#E8D5B0" stroke-width="0.8" opacity="0.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Data
-        const projects = [
-            {
-                id: 'bellachik',
-                name: 'BellaChik - Ecommerce & Booking',
-                type: 'CMS Implementation',
-                period: '2024-2025',
-                challenge: 'Implementar sistema completo de ecommerce con gestión de servicios médico-estéticos, múltiples categorías de productos, sistema de reservas y rotación automática de promociones mensuales.',
-                solution: [
-                    'Automatización de promociones mediante objetos JavaScript para rotación mensual sin intervención manual',
-                    'Sistema de filtrado dinámico para +50 servicios faciales y corporales',
-                    'Arquitectura modular de widgets ecommerce optimizada para mantenimiento',
-                    'Gestión de assets progresiva con sistema de placeholder-to-production',
-                    'Integración de sistema de valoraciones y ritual de experiencias'
-                ],
-                tech: 'CMS Widgets, JavaScript Vanilla, Responsive Design, API Integration',
-                complexity: 'Alto',
-                impact: 'Sistema escalable que permite gestión autónoma del contenido y promociones sin desarrollo adicional'
-            },
-            {
-                id: 'enter',
-                name: 'ENTER Conecta - B2B SaaS Platform',
-                type: 'Corporate Website & Platform',
-                period: '2024-2025',
-                challenge: 'Desarrollar sitio corporativo para empresa de consultoría tecnológica con múltiples líneas de negocio (CRM, IA, Marketing Automation, Integraciones) y su plataforma SaaS propietaria.',
-                solution: [
-                    'Arquitectura de información para 5 pilares tecnológicos complejos',
-                    'Sistema de formularios segmentados por solución (CRM, IA, Automatización)',
-                    'Integración visual de +15 alianzas tecnológicas (Salesforce, HubSpot, OpenAI, etc.)',
-                    'Diseño de journey maps interactivos para procesos de implementación',
-                    'Sección técnica detallada de integraciones (n8n, Zapier, Make, APIs)'
-                ],
-                tech: 'Modern Web Stack, Form Handling, API Documentation Design',
-                complexity: 'Alto',
-                impact: 'Hub centralizado de generación de leads calificados por vertical tecnológica'
-            },
-            {
-                id: 'habitare',
-                name: 'Habitaré - Real Estate Platform',
-                type: 'Property Management System',
-                period: '2024-2025',
-                challenge: 'Crear plataforma inmobiliaria con catálogo dinámico de propiedades, sistema de filtros avanzado y gestión de servicios (compra, venta, renta, opinión de valor).',
-                solution: [
-                    'Sistema de filtros múltiples: ubicación, tipo, precio, características (+12 tipos de inmueble)',
-                    'Arquitectura de servicios modular para gestión de ciclo completo inmobiliario',
-                    'Design system coherente basado en brand guidelines (Poppins/Lato, paleta Azul/Terracota)',
-                    'Integración de mapa de ubicación y recorridos virtuales',
-                    'Formularios contextuales según servicio requerido'
-                ],
-                tech: 'CMS, Geolocation APIs, Advanced Filtering Logic, Property Listing Management',
-                complexity: 'Medio-Alto',
-                impact: 'Plataforma escalable que centraliza operación inmobiliaria completa'
-            },
-            {
-                id: 'inmunomedi',
-                name: 'InmunoVital - Medical Ecommerce',
-                type: 'Healthcare Products Platform',
-                period: '2024-2025',
-                challenge: 'Ecommerce especializado en productos inmunológicos y suplementos médicos con sistema de precios mayorista/menudeo y gestión de prescripciones.',
-                solution: [
-                    'Sistema dual de precios: retail (<5 unidades) vs mayoreo (5+ unidades)',
-                    'Catálogo médico con información técnica: presentaciones, indicaciones, dosificación',
-                    'Integración con InmunoApp (iOS/Android) para gestión de tratamientos',
-                    'Sistema de productos relacionados y recomendaciones cruzadas',
-                    'Documentación COFEPRIS y certificaciones médicas'
-                ],
-                tech: 'Ecommerce Platform, Tiered Pricing Logic, Medical Compliance, App Integration',
-                complexity: 'Medio',
-                impact: 'Canal digital para distribución médica con trazabilidad completa'
-            }
-        ];
+<!-- ═══════════════════════════════════════════ MERCHANDISE MOCKUPS -->
+<div class="mockup-section">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="section-label">05 — Merchandising</div>
+    <h2>Aplicación en Productos</h2>
+    <div class="merch-grid">
 
-        const coreSkills = {
-            problemSolving: {
-                title: 'Resolución de Problemas',
-                icon: 'wrench',
-                color: 'blue',
-                items: [
-                    'Análisis de restricciones en entornos de producción',
-                    'Diseño de soluciones resilientes ante cambios de entorno',
-                    'Anticipación de puntos de falla y edge cases',
-                    'Debugging en sistemas de terceros (widgets, plugins, APIs)',
-                    'Optimización progresiva sin romper funcionalidad existente'
-                ]
-            },
-            architecture: {
-                title: 'Arquitectura & Diseño',
-                icon: 'layout',
-                color: 'purple',
-                items: [
-                    'Bajo acoplamiento entre componentes',
-                    'Arquitectura modular y mantenible',
-                    'Separación de concerns en CMS restrictivos',
-                    'State management en vanilla JS',
-                    'Patrones de diseño adaptados a restricciones reales'
-                ]
-            },
-            production: {
-                title: 'Entornos de Producción',
-                icon: 'server',
-                color: 'green',
-                items: [
-                    'Desarrollo en entornos CMS con limitaciones',
-                    'Integración con widgets y sistemas de terceros',
-                    'Mantenimiento de tracking y analytics existentes',
-                    'Despliegue sin interrumpir flujos productivos',
-                    'Documentación de soluciones para handoff'
-                ]
-            },
-            security: {
-                title: 'Ciberseguridad',
-                icon: 'shield',
-                color: 'red',
-                items: [
-                    'Fundamentos de ciberseguridad',
-                    'Validación y sanitización de inputs',
-                    'Manejo seguro de datos sensibles',
-                    'Comprensión de vectores de ataque comunes',
-                    'Best practices en autenticación y autorización'
-                ]
-            }
-        };
+      <!-- MUG -->
+      <div class="merch-item">
+        <svg viewBox="0 0 160 180" class="mug-svg" xmlns="http://www.w3.org/2000/svg">
+          <!-- Mug body -->
+          <path d="M30,50 Q28,150 35,160 L125,160 Q132,150 130,50 Z" fill="#2C1810" stroke="#C8A96E" stroke-width="0.5"/>
+          <!-- Mug rim -->
+          <ellipse cx="80" cy="50" rx="50" ry="8" fill="#3D2415" stroke="#C8A96E" stroke-width="0.5"/>
+          <!-- Mug handle -->
+          <path d="M130,80 Q160,80 160,105 Q160,130 130,130" fill="none" stroke="#C8A96E" stroke-width="2"/>
+          <!-- Logo on mug -->
+          <g transform="translate(80,100)">
+            <polygon points="-22,20 -8,2 6,20" fill="none" stroke="#C8A96E" stroke-width="0.8"/>
+            <polygon points="-4,20 8,-8 20,20" fill="none" stroke="#C8A96E" stroke-width="0.8"/>
+            <line x1="-22" y1="20" x2="20" y2="20" stroke="#C8A96E" stroke-width="0.8"/>
+            <polyline points="3,-2 8,-8 13,-2" fill="none" stroke="#E8D5B0" stroke-width="0.6"/>
+          </g>
+          <text x="80" y="140" font-family="Georgia,serif" font-size="8" letter-spacing="3" fill="#C8A96E" text-anchor="middle">SIERRA</text>
+          <!-- Steam -->
+          <path d="M55,40 Q58,30 55,20" fill="none" stroke="#C8A96E" stroke-width="0.5" opacity="0.3"/>
+          <path d="M80,38 Q83,28 80,18" fill="none" stroke="#C8A96E" stroke-width="0.5" opacity="0.3"/>
+          <path d="M105,40 Q108,30 105,20" fill="none" stroke="#C8A96E" stroke-width="0.5" opacity="0.3"/>
+        </svg>
+        <div class="merch-label">Taza de Cerámica</div>
+      </div>
 
-        // Render functions
-        function renderProjects() {
-            const container = document.getElementById('projects');
-            container.innerHTML = projects.map(project => `
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-title">
-                            <h3>${project.name}</h3>
-                            <p class="project-meta">${project.type} • ${project.period}</p>
-                        </div>
-                        <span class="complexity-badge">${project.complexity}</span>
-                    </div>
-                    
-                    <div class="project-section">
-                        <h4>Reto</h4>
-                        <p>${project.challenge}</p>
-                    </div>
+      <!-- BAG -->
+      <div class="merch-item">
+        <svg viewBox="0 0 130 200" class="bag-svg" xmlns="http://www.w3.org/2000/svg">
+          <!-- Bag body -->
+          <path d="M20,60 L15,185 Q15,192 22,192 L108,192 Q115,192 115,185 L110,60 Z" fill="#1A1410" stroke="#C8A96E" stroke-width="0.5"/>
+          <!-- Bag top fold -->
+          <rect x="20" y="50" width="90" height="15" fill="#2C1810" rx="1"/>
+          <!-- Bag handles -->
+          <path d="M45,50 Q45,30 65,30 Q85,30 85,50" fill="none" stroke="#C8A96E" stroke-width="1.5"/>
+          <!-- Seal line -->
+          <line x1="20" y1="90" x2="110" y2="90" stroke="#C8A96E" stroke-width="0.3" opacity="0.4"/>
+          <!-- Logo on bag -->
+          <g transform="translate(65,120)">
+            <polygon points="-28,25 -10,2 8,25" fill="none" stroke="#C8A96E" stroke-width="1"/>
+            <polygon points="-5,25 10,-10 25,25" fill="none" stroke="#C8A96E" stroke-width="1"/>
+            <line x1="-28" y1="25" x2="25" y2="25" stroke="#C8A96E" stroke-width="1"/>
+            <polyline points="4,-3 10,-10 16,-3" fill="none" stroke="#E8D5B0" stroke-width="0.8"/>
+          </g>
+          <text x="65" y="158" font-family="Georgia,serif" font-size="9" letter-spacing="3" fill="#C8A96E" text-anchor="middle">SIERRA</text>
+          <line x1="30" y1="164" x2="52" y2="164" stroke="#C8A96E" stroke-width="0.4" opacity="0.5"/>
+          <line x1="78" y1="164" x2="100" y2="164" stroke="#C8A96E" stroke-width="0.4" opacity="0.5"/>
+          <text x="65" y="173" font-family="Courier New,monospace" font-size="5" letter-spacing="2.5" fill="#8B7355" text-anchor="middle">CAFÉ DE ESPECIALIDAD</text>
+          <!-- Weight label -->
+          <text x="65" y="182" font-family="Courier New,monospace" font-size="5" letter-spacing="1" fill="#8B7355" text-anchor="middle" opacity="0.5">250g — SPECIALTY GRADE</text>
+        </svg>
+        <div class="merch-label">Bolsa de Café 250g</div>
+      </div>
 
-                    <div class="project-section">
-                        <h4>Solución implementada</h4>
-                        <ul class="solution-list">
-                            ${project.solution.map(item => `
-                                <li class="solution-item">
-                                    <span class="check-icon">✓</span>
-                                    <span>${item}</span>
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </div>
+      <!-- T-SHIRT -->
+      <div class="merch-item">
+        <svg viewBox="0 0 170 180" class="tee-svg" xmlns="http://www.w3.org/2000/svg">
+          <!-- Tee shape -->
+          <path d="M50,20 L20,50 L40,60 L40,160 L130,160 L130,60 L150,50 L120,20 Q110,30 85,30 Q60,30 50,20 Z" fill="#2C1810" stroke="#C8A96E" stroke-width="0.5"/>
+          <!-- Collar -->
+          <path d="M50,20 Q85,38 120,20" fill="none" stroke="#1A1410" stroke-width="3"/>
+          <!-- Logo on tee -->
+          <g transform="translate(85,90)">
+            <polygon points="-26,22 -9,2 8,22" fill="none" stroke="#C8A96E" stroke-width="0.9"/>
+            <polygon points="-4,22 9,-8 22,22" fill="none" stroke="#C8A96E" stroke-width="0.9"/>
+            <line x1="-26" y1="22" x2="22" y2="22" stroke="#C8A96E" stroke-width="0.9"/>
+            <polyline points="3,-1 9,-8 15,-1" fill="none" stroke="#E8D5B0" stroke-width="0.7"/>
+          </g>
+          <text x="85" y="126" font-family="Georgia,serif" font-size="9" letter-spacing="3" fill="#C8A96E" text-anchor="middle">SIERRA</text>
+          <text x="85" y="136" font-family="Courier New,monospace" font-size="5" letter-spacing="2" fill="#8B7355" text-anchor="middle">CAFÉ DE ESPECIALIDAD</text>
+        </svg>
+        <div class="merch-label">Camiseta Unisex</div>
+      </div>
 
-                    <div class="project-footer">
-                        <div class="footer-section">
-                            <div class="footer-label">Stack</div>
-                            <p class="footer-text">${project.tech}</p>
-                        </div>
-                        <div class="footer-section">
-                            <div class="footer-label">Impacto</div>
-                            <p class="footer-text">${project.impact}</p>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
+    </div>
+  </div>
+</div>
 
-        function renderSkills() {
-            const container = document.getElementById('skills');
-            const icons = {
-                wrench: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>',
-                layout: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>',
-                server: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>',
-                shield: '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>'
-            };
+<!-- ═══════════════════════════════════════════ BRAND GUIDELINES -->
+<section>
+  <div class="section-label">06 — Directrices</div>
+  <h2>Guía de Uso de Marca</h2>
+  <div style="background:white;border:1px solid var(--fog);padding:32px;margin-bottom:24px">
+    <table class="guidelines-table">
+      <tr>
+        <th>Elemento</th>
+        <th>Correcto</th>
+        <th>Incorrecto</th>
+      </tr>
+      <tr>
+        <td>Logo — espacio libre</td>
+        <td>Mínimo equivalente a la altura de la "S" alrededor del logo</td>
+        <td>Recortar o superponer elementos sobre el logo</td>
+      </tr>
+      <tr>
+        <td>Fondos permitidos</td>
+        <td>#1A1410 (principal), #FAF7F2 (claro), fotografía oscura</td>
+        <td>Fondos saturados, patrones complejos o colores no aprobados</td>
+      </tr>
+      <tr>
+        <td>Colores del logo</td>
+        <td>Oro #C8A96E sobre oscuro · Espresso #1A1410 sobre claro</td>
+        <td>Modificar colores del logo o agregar sombras/efectos</td>
+      </tr>
+      <tr>
+        <td>Tipografía</td>
+        <td>Cormorant Garamond (display) + Josefin Sans (UI)</td>
+        <td>Mezclar con fuentes no aprobadas como Impact, Comic Sans, etc.</td>
+      </tr>
+      <tr>
+        <td>Tamaño mínimo logo</td>
+        <td>80px de ancho en digital · 20mm en impresión</td>
+        <td>Usar el logo a tamaños menores sin recurrir al favicon</td>
+      </tr>
+    </table>
+  </div>
+</section>
 
-            container.innerHTML = `
-                <div class="skills-grid">
-                    ${Object.values(coreSkills).map(skill => `
-                        <div class="skill-card">
-                            <div class="skill-header">
-                                <div class="skill-icon icon-${skill.color}">
-                                    ${icons[skill.icon]}
-                                </div>
-                                <h3>${skill.title}</h3>
-                            </div>
-                            <ul class="skill-list">
-                                ${skill.items.map(item => `
-                                    <li class="skill-item">
-                                        <span class="skill-bullet" style="color: var(--color-${skill.color})">▸</span>
-                                        <span>${item}</span>
-                                    </li>
-                                `).join('')}
-                            </ul>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-        }
+<!-- ═══════════════════════════════════════════ FOOTER -->
+<div class="footer">
+  <div>
+    <svg viewBox="0 0 200 40" width="120" xmlns="http://www.w3.org/2000/svg">
+      <g transform="translate(20,2)">
+        <polygon points="-12,16 -4,4 4,16" fill="none" stroke="#C8A96E" stroke-width="1"/>
+        <polygon points="-2,16 5,-2 12,16" fill="none" stroke="#C8A96E" stroke-width="1"/>
+        <line x1="-12" y1="16" x2="12" y2="16" stroke="#C8A96E" stroke-width="1"/>
+      </g>
+      <text x="50" y="14" font-family="Georgia,serif" font-size="13" letter-spacing="4" fill="#C8A96E">SIERRA</text>
+      <text x="50" y="24" font-family="Courier New,monospace" font-size="5" letter-spacing="2" fill="#8B7355">CAFÉ DE ESPECIALIDAD</text>
+    </svg>
+  </div>
+  <div class="footer-text">Brand Identity Pack — 2025</div>
+  <div class="footer-text" style="text-align:right">Confidencial · Uso interno</div>
+</div>
 
-        // Navigation
-        document.querySelectorAll('.nav-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const section = btn.dataset.section;
-                
-                // Update active button
-                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                // Update active section
-                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-                document.getElementById(section).classList.add('active');
-            });
-        });
-
-        // Initialize
-        renderProjects();
-        renderSkills();
-    </script>
 </body>
 </html>
