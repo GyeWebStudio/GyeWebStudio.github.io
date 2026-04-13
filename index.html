@@ -1049,23 +1049,4 @@
     </div>
   </footer>
 
-  <script>
-    window.addEventListener('scroll', function() {
-      var nav = document.getElementById('site-nav');
-      if (window.scrollY > 60) {
-        nav.style.background = '#faf9f6';
-        nav.style.boxShadow = '0 2px 16px rgba(0,0,0,0.08)';
-        nav.style.borderBottom = '1px solid rgba(0,0,0,0.08)';
-        nav.querySelectorAll('a').forEach(function(a){ a.style.color = '#2a2a26'; });
-      } else {
-        nav.style.background = 'transparent';
-        nav.style.boxShadow = 'none';
-        nav.style.borderBottom = 'none';
-        nav.querySelectorAll('a').forEach(function(a){ a.style.color = ''; });
-      }
-    });   // Mobile nav toggle (simple show/hide of links)
-    document.querySelector('.nav-toggle')?.addEventListener('click', () => {
-      const links = document.querySelector('.nav-links');
-      const cta   = document.querySelector('.nav-cta');
-      const open  = links.style.display === 'flex';
-      links.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(250,249,246,0.97);padding:1.5rem 2
+  
